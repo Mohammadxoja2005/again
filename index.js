@@ -1,10 +1,17 @@
-const express = require("express"); 
-const app = express(); 
+const express = require("express");
+const cors = require("cors");
+const app = express();
+const db = require("./models"); 
 
-app.listen(4000, () => {
-    console.log('server started...')
-})
+app.use(express.json());
+app.use(cors());
 
-app.get('/', (req, res) =>{
-    res.send("hello world"); 
-})
+db.sequelize.sync().then(() => {
+  app.listen(4000, () => {
+    console.log("server started...");
+  });
+});
+
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
