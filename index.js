@@ -6,11 +6,11 @@ const db = require("./models");
 app.use(express.json());
 app.use(cors());
 
-// db.sequelize.sync().then(() => {
+db.sequelize.sync().then(() => {
   app.listen(process.env.PORT || 4000, () => {
     console.log("server started...");
   });
-// });
+});
 
 app.get("/", (req, res) => {    
   res.send("hello world");
