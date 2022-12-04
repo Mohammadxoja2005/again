@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors());
 
 // db.sequelize.sync().then(() => {
-  app.listen(4000, () => {
+  app.listen(process.env.PORT || 4000, () => {
     console.log("server started...");
   });
 // });
